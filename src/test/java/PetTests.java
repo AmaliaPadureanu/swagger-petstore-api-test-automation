@@ -14,4 +14,13 @@ public class PetTests extends TestConfig {
                 .get(PetStoreEndpoints.PET)
         .then();
     }
+
+    @Test
+    public void getPetByStatus() {
+        given()
+                .queryParam("status", "available")
+        .when()
+                .get(PetStoreEndpoints.PET_BY_STATUS)
+        .then();
+    }
 }
