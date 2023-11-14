@@ -1,4 +1,5 @@
 package config;
 
-public interface PetstoreEndpoints {
+public interface PetStoreEndpoints {
+    String PET = "/pet/{petId}";
 }
