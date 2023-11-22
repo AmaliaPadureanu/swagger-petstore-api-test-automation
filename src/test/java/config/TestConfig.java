@@ -17,6 +17,7 @@ public class TestConfig {
                 .setBasePath("v2/")
                 .setContentType("application/json")
                 .addHeader("Accept", "application/json")
+                .addHeader("api_key", "apiKey")
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .build();

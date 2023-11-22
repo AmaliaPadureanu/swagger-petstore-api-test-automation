@@ -2,9 +2,11 @@ import Models.User;
 import config.PetStoreEndpoints;
 import config.TestConfig;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static io.restassured.RestAssured.given;
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserTests extends TestConfig {
 
     @Test

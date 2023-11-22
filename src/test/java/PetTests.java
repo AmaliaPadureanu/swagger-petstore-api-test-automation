@@ -2,7 +2,9 @@ import config.PetStoreEndpoints;
 import config.TestConfig;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.junit.jupiter.api.Order;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -75,5 +77,18 @@ public class PetTests extends TestConfig {
 
         List<String> photoUrls = response.path("photoUrls");
         assert !photoUrls.isEmpty();
+    }
+
+    @Test
+    public void uploadPetImage() {
+        File petImage = new File("src/test/java/cute-puppy.jpg");
+
+        given()
+                .contentType("multipart/form-data")
+                .pathParam("petId", 9223372036854774931L)
+                .multiPart("file", petImage)
+                .when()
+                .post(PetStoreEndpoints.PET_UPLOAD_IMAGE)
+                .then();
     }
 }
