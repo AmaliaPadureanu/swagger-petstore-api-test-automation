@@ -16,7 +16,6 @@ public class UserTests extends TestConfig {
 
     @Test(priority = 1)
     public void login() {
-
         given()
                 .queryParam("username", "test")
                 .queryParam("password", "abc123")
@@ -35,11 +34,41 @@ public class UserTests extends TestConfig {
     }
 
     @Test (priority = 3)
-    public void getUserById() {
-        given()
+    public void getUserByUsername() {
+        String username = given()
                 .pathParam("username", testUser.getUsername())
         .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
+        .then().extract().response().as(User.class).getUsername();
+        assert username.equals(testUser.getUsername());
+    }
+
+    @Test(priority = 3)
+    public void updateUserEmailAddress() {
+        String newEmailAddress = DataGenerationUtils.generateRandomEmailAddress();
+        testUser.setEmail(newEmailAddress);
+
+        given()
+                .pathParam("username", testUser.getUsername())
+                .body(testUser)
+        .when().put(PetStoreEndpoints.USER_BY_NAME)
+        .then();
+
+        String email = given()
+                .pathParam("username", testUser.getUsername())
+        .when()
+                .get(PetStoreEndpoints.USER_BY_NAME)
+        .then().extract().response().as(User.class).getEmail();
+        assert email.equals(newEmailAddress);
+    }
+
+    @Test(priority = 4)
+    public void logout() {
+        given()
+                .queryParam("username", "test")
+                .queryParam("password", "abc123")
+        .when()
+                .get(PetStoreEndpoints.LOGOUT)
         .then();
     }
 }
