@@ -12,6 +12,8 @@ public interface PetStoreEndpoints {
 
     //user endpoints
     String CREATE_USER = "/user";
+    String CREATE_WITH_LIST = "/user/createWithList";
+    String CREATE_WITH_ARRAY = "/user/createWithArray";
     String LOGIN = "user/login";
     String USER_BY_NAME = "/user/{username}";
     String LOGOUT = "user/logout";
