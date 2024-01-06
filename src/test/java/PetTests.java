@@ -126,14 +126,31 @@ public class PetTests extends TestConfig {
 
     @Test(priority = 3)
     public void updatePetFormData() {
+        String newName = DataGenerationUtils.generateRandomAlphaString();
+        String newStatus = Status.sold.toString();
+
         given()
                 .contentType(ContentType.URLENC)
                 .pathParam("petId", testPet.getId())
-                .formParam("name", DataGenerationUtils.generateRandomAlphaString())
-                .formParam("status", Status.sold.toString())
+                .formParam("name", newName)
+                .formParam("status", newStatus)
         .when()
                 .post(PetStoreEndpoints.UPDATE_PET_FORM_DATA)
         .then();
+
+        String name = given()
+                .pathParam("petId", testPet.getId())
+        .when()
+                .get(PetStoreEndpoints.PET_BY_ID)
+        .then().extract().response().as(Pet.class).getName();
+        assert name.equals(newName);
+
+        String status = given()
+                .pathParam("petId", testPet.getId())
+        .when()
+                .get(PetStoreEndpoints.PET_BY_ID)
+        .then().extract().response().as(Pet.class).getStatus();
+        assert status.equals(newStatus);
     }
 
     @Test(priority = 4)
