@@ -6,7 +6,8 @@ import config.PetStoreEndpoints;
 import config.TestConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.Test;
+import org.testng.annotations.Test;
+import utils.DataGenerationUtils;
 
 import java.io.File;
 import java.util.List;
@@ -14,29 +15,37 @@ import java.util.Map;
 import java.util.Set;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
 
 public class PetTests extends TestConfig {
 
-    Category newCategory = new Category(23445, "dogs");
+    Category testCategory = new Category(DataGenerationUtils.generateRandomId(), "dogs");
     List<String> photos = List.of("src/test/java/cute-puppy.jpg");
     Tag newTag1 = new Tag(23433, "TAG1");
     Tag newTag2 = new Tag(23333, "TAG2");
     List<Tag> tags = List.of(newTag1, newTag2);
-    Pet newPet = new Pet(5345765, newCategory, "Max", photos, tags, Status.available.toString());
+    Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, "Max", photos, tags, Status.available.toString());
 
-    @Test
+    @Test(priority = 1)
+    public void createPet() {
+        Pet pet = given()
+                .body(testPet)
+        .when()
+                .post(PetStoreEndpoints.CREATE_PET)
+        .then().extract().response().as(Pet.class);
+        assert pet.getId().equals(testPet.getId());
+    }
+
+    @Test(priority = 2)
     public void getPetById() {
         given()
-                .pathParam("petId", 5345765)
+                .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
         .then();
     }
 
-    @Test
+    @Test (priority = 2)
     public void getPetsByStatus() {
-
         given()
                 .queryParam("status", Status.sold.toString())
         .when()
@@ -44,32 +53,33 @@ public class PetTests extends TestConfig {
         .then();
     }
 
-    @Test
+    @Test (priority = 2)
     public void getPetAndValidateName() {
-        given()
-                .pathParam("petId", 9223372036854773147L)
+        String petName = given()
+                .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then()
-                .body("name", equalTo("fish"));
+        .then().extract().response().as(Pet.class).getName();
+        assert petName.equals(testPet.getName());
     }
 
-    @Test
+    @Test (priority = 2)
     public void getPetAndValidateCategoryName() {
-        given()
-                .pathParam("petId", 9223372036854773147L)
+        Category petCategory = given()
+                .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then()
-                .body("category.name", equalTo("string"));
+        .then().extract().as(Pet.class).getCategory();
+        assert petCategory.getId().equals(testCategory.getId());
+        assert petCategory.getName().equals(testCategory.getName());
     }
 
-    @Test
+    @Test(priority = 2)
     public void validateResponseContainsAllData() {
         Set<String> expectedData = Set.of("id", "category", "name", "photoUrls", "tags", "status");
         Response response =
                 given()
-                        .pathParam("petId", 9223372036854773147L)
+                        .pathParam("petId", testPet.getId())
                 .when()
                         .get(PetStoreEndpoints.PET_BY_ID)
                 .then()
@@ -77,11 +87,11 @@ public class PetTests extends TestConfig {
         assert response.as(Map.class).keySet().equals(expectedData);
     }
 
-    @Test
+    @Test(priority = 2)
     public void validatePetHasPhotoUrl() {
         Response response =
                 given()
-                        .pathParam("petId", 9223372036854773147L)
+                        .pathParam("petId", testPet.getId())
                 .when()
                         .get(PetStoreEndpoints.PET_BY_ID)
                 .then()
@@ -91,55 +101,46 @@ public class PetTests extends TestConfig {
         assert !photoUrls.isEmpty();
     }
 
-    @Test
+    @Test (priority = 2)
     public void uploadPetImage() {
         File petImage = new File("src/test/java/cute-puppy.jpg");
 
         given()
                 .contentType("multipart/form-data")
-                .pathParam("petId", 9223372036854773147L)
+                .pathParam("petId", testPet.getId())
                 .multiPart("file", petImage)
         .when()
                 .post(PetStoreEndpoints.PET_UPLOAD_IMAGE)
         .then();
     }
 
-    @Test
-    public void createPet() {
-        given()
-                .body(newPet)
-        .when()
-                .post(PetStoreEndpoints.CREATE_PET)
-        .then();
-    }
-
-    @Test
+    @Test(priority = 3)
     public void updatePet() {
-        newPet.setStatus(Status.sold.toString());
+        testPet.setStatus(Status.pending.toString());
 
         given()
-                .body(newPet)
+                .body(testPet)
         .when()
                 .put(PetStoreEndpoints.UPDATE_PET)
         .then();
     }
 
-    @Test
+    @Test(priority = 3)
     public void updatePetFormData() {
         given()
                 .contentType(ContentType.URLENC)
-                .pathParam("petId", "5345765")
-                .formParam("name", "Bobitza")
+                .pathParam("petId", testPet.getId())
+                .formParam("name", "Lucy")
                 .formParam("status", Status.sold.toString())
         .when()
                 .post(PetStoreEndpoints.UPDATE_PET_FORM_DATA)
         .then();
     }
 
-    @Test
+    @Test(priority = 4)
     public void deletePet() {
         given()
-                .pathParam("petId", "5345765")
+                .pathParam("petId", testPet.getId())
         .when()
                 .delete(PetStoreEndpoints.DELETE_PET)
         .then();
