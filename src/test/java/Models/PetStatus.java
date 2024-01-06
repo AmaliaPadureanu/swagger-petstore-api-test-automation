@@ -1,6 +1,6 @@
 package Models;
 
-public enum Status {
+public enum PetStatus {
     available,
     pending,
     sold

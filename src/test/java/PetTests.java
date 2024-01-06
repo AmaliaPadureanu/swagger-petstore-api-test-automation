@@ -1,6 +1,6 @@
 import Models.Category;
 import Models.Pet;
-import Models.Status;
+import Models.PetStatus;
 import Models.Tag;
 import config.PetStoreEndpoints;
 import config.TestConfig;
@@ -25,7 +25,7 @@ public class PetTests extends TestConfig {
     Tag newTag1 = new Tag(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString());
     Tag newTag2 = new Tag(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString());
     List<Tag> tags = List.of(newTag1, newTag2);
-    Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, DataGenerationUtils.generateRandomAlphaString(), photos, tags, Status.available.toString());
+    Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, DataGenerationUtils.generateRandomAlphaString(), photos, tags, PetStatus.available.toString());
 
     @Test(priority = 1)
     public void createPet() {
@@ -49,13 +49,13 @@ public class PetTests extends TestConfig {
     @Test (priority = 2)
     public void getPetsByStatus() {
         List<Pet> pets = given()
-                .queryParam("status", Status.sold.toString())
+                .queryParam("status", PetStatus.sold.toString())
         .when()
                 .get(PetStoreEndpoints.PET_BY_STATUS)
         .then()
                 .extract().body().jsonPath().getList(".", Pet.class);
-        assert !pets.stream().allMatch(pet -> Objects.equals(pet.getStatus(), Status.available.toString())
-                || Objects.equals(pet.getStatus(), Status.pending.toString()));
+        assert !pets.stream().allMatch(pet -> Objects.equals(pet.getStatus(), PetStatus.available.toString())
+                || Objects.equals(pet.getStatus(), PetStatus.pending.toString()));
     }
 
     @Test (priority = 2)
@@ -122,7 +122,7 @@ public class PetTests extends TestConfig {
 
     @Test(priority = 3)
     public void updatePet() {
-        String newStatus = Status.pending.toString();
+        String newStatus = PetStatus.pending.toString();
         testPet.setStatus(newStatus);
 
         given()
@@ -136,7 +136,7 @@ public class PetTests extends TestConfig {
     @Test(priority = 3)
     public void updatePetFormData() {
         String newName = DataGenerationUtils.generateRandomAlphaString();
-        String newStatus = Status.sold.toString();
+        String newStatus = PetStatus.sold.toString();
 
         given()
                 .contentType(ContentType.URLENC)
