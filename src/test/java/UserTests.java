@@ -15,7 +15,6 @@ public class UserTests extends TestConfig {
             DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
             DataGenerationUtils.generateRandomNumbercString(), 0);
 
-
     @Test(priority = 1)
     public void login() {
         given()
@@ -77,7 +76,7 @@ public class UserTests extends TestConfig {
                 DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
                 DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
                 DataGenerationUtils.generateRandomNumbercString(), 6);
-        
+
         User[] users = new User[] {testUser4, testUser5, testUser6};
 
         given()
