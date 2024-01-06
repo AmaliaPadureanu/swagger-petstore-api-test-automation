@@ -10,10 +10,7 @@ import static io.restassured.RestAssured.given;
 
 public class UserTests extends TestConfig {
 
-    User testUser = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-            DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-            DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-            DataGenerationUtils.generateRandomNumbercString(), 0);
+    User testUser = DataGenerationUtils.generateNewRandomUser();
 
     @Test(priority = 1)
     public void login() {
@@ -36,20 +33,9 @@ public class UserTests extends TestConfig {
 
     @Test(priority = 2)
     public void createUsersWithList() {
-        User testUser1 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 1);
-
-        User testUser2 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 2);
-
-        User testUser3 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 3);
+        User testUser1 = DataGenerationUtils.generateNewRandomUser();
+        User testUser2 = DataGenerationUtils.generateNewRandomUser();
+        User testUser3 = DataGenerationUtils.generateNewRandomUser();
 
         List<User> users = List.of(testUser1, testUser2, testUser3);
 
@@ -62,20 +48,9 @@ public class UserTests extends TestConfig {
 
     @Test(priority = 2)
     public void createUsersWithArray() {
-        User testUser4 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 4);
-
-        User testUser5 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 5);
-
-        User testUser6 = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
-                DataGenerationUtils.generateRandomNumbercString(), 6);
+        User testUser4 = DataGenerationUtils.generateNewRandomUser();
+        User testUser5 = DataGenerationUtils.generateNewRandomUser();
+        User testUser6 = DataGenerationUtils.generateNewRandomUser();
 
         User[] users = new User[] {testUser4, testUser5, testUser6};
 

@@ -1,5 +1,7 @@
 package utils;
 
+import Models.User;
+
 import java.util.Random;
 
 public class DataGenerationUtils {
@@ -7,6 +9,11 @@ public class DataGenerationUtils {
     public static Integer generateRandomId() {
         Random random = new Random();
         return random.nextInt(1000000);
+    }
+
+    public static Integer generateRandomUserStatus() {
+        Random random = new Random();
+        return random.nextInt(100);
     }
 
     public static String generateRandomAlphaString() {
@@ -40,6 +47,12 @@ public class DataGenerationUtils {
             stringBuilder.append(alphaString.charAt(index));
         }
         return stringBuilder + "@gmail.com";
+    }
+
+    public static User generateNewRandomUser() {
+        return new User(generateRandomId(), generateRandomAlphaString(), generateRandomAlphaString(),
+                generateRandomAlphaString(), generateRandomEmailAddress(), generateRandomAlphaString(),
+                generateRandomNumbercString(), generateRandomUserStatus());
     }
 }
 
