@@ -1,9 +1,9 @@
+import Models.ApiResponse;
 import Models.User;
 import config.PetStoreEndpoints;
 import config.TestConfig;
 import org.testng.annotations.Test;
 import utils.DataGenerationUtils;
-
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -11,24 +11,30 @@ import static io.restassured.RestAssured.given;
 public class UserTests extends TestConfig {
 
     User testUser = DataGenerationUtils.generateNewRandomUser();
+    ApiResponse apiResponse;
 
     @Test(priority = 1)
     public void login() {
-        given()
+         apiResponse = given()
                 .queryParam("username", "test")
                 .queryParam("password", "abc123")
         .when()
                 .get(PetStoreEndpoints.LOGIN)
-        .then();
+        .then()
+                .extract().response().as(ApiResponse.class);
+        assert apiResponse.getType().equals("unknown");
+        assert apiResponse.getMessage().contains("logged in user session");
     }
 
     @Test (priority = 2)
     public void createUser() {
-        given()
+        apiResponse = given()
                 .body(testUser)
         .when()
                 .post(PetStoreEndpoints.CREATE_USER)
-        .then();
+        .then()
+                .extract().response().as(ApiResponse.class);
+        assert apiResponse.getMessage().equals(testUser.getId().toString());
     }
 
     @Test(priority = 2)
@@ -36,14 +42,15 @@ public class UserTests extends TestConfig {
         User testUser1 = DataGenerationUtils.generateNewRandomUser();
         User testUser2 = DataGenerationUtils.generateNewRandomUser();
         User testUser3 = DataGenerationUtils.generateNewRandomUser();
-
         List<User> users = List.of(testUser1, testUser2, testUser3);
 
-        given()
+        apiResponse = given()
                 .body(users)
         .when()
                 .post(PetStoreEndpoints.CREATE_WITH_LIST)
-        .then();
+        .then()
+                .extract().as(ApiResponse.class);
+        assert apiResponse.getMessage().equals("ok");
 
         for (User user : users) {
             given()
@@ -59,7 +66,6 @@ public class UserTests extends TestConfig {
         User testUser4 = DataGenerationUtils.generateNewRandomUser();
         User testUser5 = DataGenerationUtils.generateNewRandomUser();
         User testUser6 = DataGenerationUtils.generateNewRandomUser();
-
         User[] users = new User[]{testUser4, testUser5, testUser6};
 
         given()
@@ -116,23 +122,27 @@ public class UserTests extends TestConfig {
                 .delete(PetStoreEndpoints.USER_BY_NAME)
         .then();
 
-        int statusCode = given()
+        apiResponse = given()
                 .pathParam("username", testUser.getUsername())
                 .expect().statusCode(404)
         .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
         .then()
-                .extract().response().getStatusCode();
-        assert statusCode == 404;
+                .extract().response().as(ApiResponse.class);
+        assert apiResponse.getType().equals("error");
+        assert apiResponse.getMessage().equals("User not found");
     }
 
     @Test(priority = 5)
     public void logout() {
-        given()
+        apiResponse = given()
                 .queryParam("username", "test")
                 .queryParam("password", "abc123")
         .when()
                 .get(PetStoreEndpoints.LOGOUT)
-        .then();
+        .then()
+                .extract().response().as(ApiResponse.class);
+    assert apiResponse.getType().equals("unknown");
+    assert apiResponse.getMessage().equals("ok");
     }
 }

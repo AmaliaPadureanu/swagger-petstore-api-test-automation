@@ -76,7 +76,7 @@ public class PetTests extends TestConfig {
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
         .then()
-                .extract().as(Pet.class).getCategory();
+                .extract().response().as(Pet.class).getCategory();
         assert petCategory.getId().equals(testCategory.getId());
         assert petCategory.getName().equals(testCategory.getName());
     }
