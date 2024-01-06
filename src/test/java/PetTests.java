@@ -8,7 +8,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utils.DataGenerationUtils;
-
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +19,10 @@ public class PetTests extends TestConfig {
 
     Category testCategory = new Category(DataGenerationUtils.generateRandomId(), "dogs");
     List<String> photos = List.of("src/test/java/cute-puppy.jpg");
-    Tag newTag1 = new Tag(23433, "TAG1");
-    Tag newTag2 = new Tag(23333, "TAG2");
+    Tag newTag1 = new Tag(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString());
+    Tag newTag2 = new Tag(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString());
     List<Tag> tags = List.of(newTag1, newTag2);
-    Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, "Max", photos, tags, Status.available.toString());
+    Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, DataGenerationUtils.generateRandomAlphaString(), photos, tags, Status.available.toString());
 
     @Test(priority = 1)
     public void createPet() {
@@ -130,7 +129,7 @@ public class PetTests extends TestConfig {
         given()
                 .contentType(ContentType.URLENC)
                 .pathParam("petId", testPet.getId())
-                .formParam("name", "Lucy")
+                .formParam("name", DataGenerationUtils.generateRandomAlphaString())
                 .formParam("status", Status.sold.toString())
         .when()
                 .post(PetStoreEndpoints.UPDATE_PET_FORM_DATA)
