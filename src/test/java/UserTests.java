@@ -36,9 +36,9 @@ public class UserTests extends TestConfig {
     public void getUserById() {
         given()
                 .pathParam("username", "BabyShark")
-                .when()
+        .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
-                .then();
+        .then();
 
     }
 }

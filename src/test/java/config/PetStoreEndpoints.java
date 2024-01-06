@@ -1,9 +1,13 @@
 package config;
 
 public interface PetStoreEndpoints {
-    String PET = "/pet/{petId}";
+    String PET_BY_ID = "/pet/{petId}";
     String PET_BY_STATUS = "pet/findByStatus";
     String PET_UPLOAD_IMAGE = "pet/{petId}/uploadImage";
+    String CREATE_PET = "/pet";
+    String UPDATE_PET = "/pet";
+    String UPDATE_PET_FORM_DATA = "/pet/{petId}";
+    String DELETE_PET = "/pet/{petId}";
 
 
     String CREATE_USER = "/user";
