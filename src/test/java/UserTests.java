@@ -62,7 +62,25 @@ public class UserTests extends TestConfig {
         assert email.equals(newEmailAddress);
     }
 
-    @Test(priority = 4)
+    @Test (priority = 4)
+    public void deleteUser() {
+        given()
+                .pathParam("username", testUser.getUsername())
+        .when()
+                .delete(PetStoreEndpoints.USER_BY_NAME)
+        .then();
+
+        int statusCode = given()
+                .pathParam("username", testUser.getUsername())
+                .expect().statusCode(404)
+        .when()
+                .get(PetStoreEndpoints.USER_BY_NAME)
+        .then()
+                .extract().response().getStatusCode();
+        assert statusCode == 404;
+    }
+
+    @Test(priority = 5)
     public void logout() {
         given()
                 .queryParam("username", "test")

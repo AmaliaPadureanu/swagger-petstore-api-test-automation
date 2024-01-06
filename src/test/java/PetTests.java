@@ -8,12 +8,15 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utils.DataGenerationUtils;
+
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class PetTests extends TestConfig {
 
@@ -26,12 +29,12 @@ public class PetTests extends TestConfig {
 
     @Test(priority = 1)
     public void createPet() {
-        Pet pet = given()
+        given()
                 .body(testPet)
         .when()
                 .post(PetStoreEndpoints.CREATE_PET)
-        .then().extract().response().as(Pet.class);
-        assert pet.getId().equals(testPet.getId());
+        .then().
+                assertThat().body("id", equalTo(testPet.getId()));
     }
 
     @Test(priority = 2)
@@ -45,11 +48,14 @@ public class PetTests extends TestConfig {
 
     @Test (priority = 2)
     public void getPetsByStatus() {
-        given()
+        List<Pet> pets = given()
                 .queryParam("status", Status.sold.toString())
         .when()
                 .get(PetStoreEndpoints.PET_BY_STATUS)
-        .then();
+        .then()
+                .extract().body().jsonPath().getList(".", Pet.class);
+        assert !pets.stream().allMatch(pet -> Objects.equals(pet.getStatus(), Status.available.toString())
+                || Objects.equals(pet.getStatus(), Status.pending.toString()));
     }
 
     @Test (priority = 2)
@@ -58,7 +64,8 @@ public class PetTests extends TestConfig {
                 .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then().extract().response().as(Pet.class).getName();
+        .then().
+                extract().response().as(Pet.class).getName();
         assert petName.equals(testPet.getName());
     }
 
@@ -68,7 +75,8 @@ public class PetTests extends TestConfig {
                 .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then().extract().as(Pet.class).getCategory();
+        .then()
+                .extract().as(Pet.class).getCategory();
         assert petCategory.getId().equals(testCategory.getId());
         assert petCategory.getName().equals(testCategory.getName());
     }
@@ -95,7 +103,6 @@ public class PetTests extends TestConfig {
                         .get(PetStoreEndpoints.PET_BY_ID)
                 .then()
                         .extract().response();
-
         List<String> photoUrls = response.path("photoUrls");
         assert !photoUrls.isEmpty();
     }
@@ -115,13 +122,15 @@ public class PetTests extends TestConfig {
 
     @Test(priority = 3)
     public void updatePet() {
-        testPet.setStatus(Status.pending.toString());
+        String newStatus = Status.pending.toString();
+        testPet.setStatus(newStatus);
 
         given()
                 .body(testPet)
         .when()
                 .put(PetStoreEndpoints.UPDATE_PET)
-        .then();
+        .then()
+                .assertThat().body("status", equalTo(newStatus));
     }
 
     @Test(priority = 3)
@@ -160,5 +169,14 @@ public class PetTests extends TestConfig {
         .when()
                 .delete(PetStoreEndpoints.DELETE_PET)
         .then();
+
+        int statusCode = given()
+                .pathParam("petId", testPet.getId())
+                .expect().statusCode(404)
+        .when()
+                .get(PetStoreEndpoints.PET_BY_ID)
+        .then()
+                .extract().response().getStatusCode();
+        assert statusCode == 404;
     }
 }
