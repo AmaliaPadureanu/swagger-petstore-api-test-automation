@@ -151,14 +151,16 @@ public class PetTests extends TestConfig {
                 .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then().extract().response().as(Pet.class).getName();
+        .then()
+                .extract().response().as(Pet.class).getName();
         assert name.equals(newName);
 
         String status = given()
                 .pathParam("petId", testPet.getId())
         .when()
                 .get(PetStoreEndpoints.PET_BY_ID)
-        .then().extract().response().as(Pet.class).getStatus();
+        .then()
+                .extract().response().as(Pet.class).getStatus();
         assert status.equals(newStatus);
     }
 

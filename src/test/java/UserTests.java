@@ -44,6 +44,14 @@ public class UserTests extends TestConfig {
         .when()
                 .post(PetStoreEndpoints.CREATE_WITH_LIST)
         .then();
+
+        for (User user : users) {
+            given()
+                    .pathParam("username", user.getUsername())
+            .when()
+                    .get(PetStoreEndpoints.USER_BY_NAME)
+            .then();
+        }
     }
 
     @Test(priority = 2)
@@ -52,13 +60,21 @@ public class UserTests extends TestConfig {
         User testUser5 = DataGenerationUtils.generateNewRandomUser();
         User testUser6 = DataGenerationUtils.generateNewRandomUser();
 
-        User[] users = new User[] {testUser4, testUser5, testUser6};
+        User[] users = new User[]{testUser4, testUser5, testUser6};
 
         given()
                 .body(users)
         .when()
                 .post(PetStoreEndpoints.CREATE_WITH_ARRAY)
         .then();
+
+        for (User user : users) {
+            given()
+                    .pathParam("username", user.getUsername())
+            .when()
+                    .get(PetStoreEndpoints.USER_BY_NAME)
+            .then();
+        }
     }
 
     @Test (priority = 3)
@@ -67,7 +83,8 @@ public class UserTests extends TestConfig {
                 .pathParam("username", testUser.getUsername())
         .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
-        .then().extract().response().as(User.class).getUsername();
+        .then()
+                .extract().response().as(User.class).getUsername();
         assert username.equals(testUser.getUsername());
     }
 
@@ -86,7 +103,8 @@ public class UserTests extends TestConfig {
                 .pathParam("username", testUser.getUsername())
         .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
-        .then().extract().response().as(User.class).getEmail();
+        .then().
+                extract().response().as(User.class).getEmail();
         assert email.equals(newEmailAddress);
     }
 
