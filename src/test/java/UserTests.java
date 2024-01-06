@@ -1,15 +1,20 @@
 import Models.User;
 import config.PetStoreEndpoints;
 import config.TestConfig;
-import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.testng.annotations.Test;
+import utils.DataGenerationUtils;
 
 import static io.restassured.RestAssured.given;
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class UserTests extends TestConfig {
 
-    @Test
+    User testUser = new User(DataGenerationUtils.generateRandomId(), DataGenerationUtils.generateRandomAlphaString(),
+            DataGenerationUtils.generateRandomAlphaString(), DataGenerationUtils.generateRandomAlphaString(),
+            DataGenerationUtils.generateRandomEmailAddress(), DataGenerationUtils.generateRandomAlphaString(),
+            DataGenerationUtils.generateRandomNumbercString(), 0);
+
+
+    @Test(priority = 1)
     public void login() {
 
         given()
@@ -20,25 +25,21 @@ public class UserTests extends TestConfig {
         .then();
     }
 
-    @Test
+    @Test (priority = 2)
     public void createUser() {
-        User newUser = new User(1919, "BabyShark", "Baby", "Shark",
-                "bshark@gmail.com", "blabla123", "399948394", 0);
-
         given()
-                .body(newUser)
+                .body(testUser)
         .when()
                 .post(PetStoreEndpoints.CREATE_USER)
         .then();
     }
 
-    @Test
+    @Test (priority = 3)
     public void getUserById() {
         given()
-                .pathParam("username", "BabyShark")
+                .pathParam("username", testUser.getUsername())
         .when()
                 .get(PetStoreEndpoints.USER_BY_NAME)
         .then();
-
     }
 }
