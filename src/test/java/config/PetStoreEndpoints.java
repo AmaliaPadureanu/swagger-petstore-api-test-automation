@@ -18,4 +18,9 @@ public interface PetStoreEndpoints {
     String USER_BY_NAME = "/user/{username}";
     String LOGOUT = "user/logout";
 
+    //store endpoints
+    String PLACE_ORDER = "/store/order";
+    String ORDER_BY_ID = "/store/order/{orderId}";
+    String PET_INVENTORY_BY_STATUS = "/store/inventory";
+
 }
