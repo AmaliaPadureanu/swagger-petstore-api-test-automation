@@ -3,7 +3,11 @@ import Models.Order;
 import Models.OrderStatus;
 import config.PetStoreEndpoints;
 import config.TestConfig;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
@@ -26,16 +30,18 @@ public class StoreTests extends TestConfig {
     @Test (priority = 2)
     public void findPurchaseOrderById() {
         given()
-                .pathParam("orderId", 9)
+                .pathParam("orderId", testOrder.getId())
         .when()
                 .get(PetStoreEndpoints.ORDER_BY_ID)
-        .then();
+        .then()
+                .assertThat().body("petId", equalTo(testOrder.getPetId()))
+                .assertThat().body("status", equalTo(testOrder.getStatus()));
     }
 
     @Test (priority = 3)
     public void deletePurchaseOrderById() {
         ApiResponse apiResponse = given()
-                .pathParam("orderId", 9)
+                .pathParam("orderId", testOrder.getId())
         .when()
                 .delete(PetStoreEndpoints.ORDER_BY_ID)
         .then()
@@ -45,9 +51,11 @@ public class StoreTests extends TestConfig {
     }
 
     @Test void getStoreInventory() {
-        given()
+        Response response = given()
         .when()
                 .get(PetStoreEndpoints.PET_INVENTORY_BY_STATUS)
-        .then();
+        .then()
+                .extract().response();
+        assert response.as(Map.class).containsKey("sold");
     }
 }
