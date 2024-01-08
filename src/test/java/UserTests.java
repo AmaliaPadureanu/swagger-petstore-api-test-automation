@@ -49,7 +49,8 @@ public class UserTests extends TestConfig {
         .when()
                 .post(PetStoreEndpoints.CREATE_WITH_LIST)
         .then()
-                .extract().as(ApiResponse.class);
+                .extract().response().as(ApiResponse.class);
+        assert apiResponse.getType().equals("unknown");
         assert apiResponse.getMessage().equals("ok");
 
         for (User user : users) {
@@ -68,11 +69,14 @@ public class UserTests extends TestConfig {
         User testUser6 = DataGenerationUtils.generateNewRandomUser();
         User[] users = new User[]{testUser4, testUser5, testUser6};
 
-        given()
+        apiResponse = given()
                 .body(users)
         .when()
                 .post(PetStoreEndpoints.CREATE_WITH_ARRAY)
-        .then();
+        .then()
+                .extract().response().as(ApiResponse.class);
+        assert apiResponse.getType().equals("unknown");
+        assert apiResponse.getMessage().equals("ok");
 
         for (User user : users) {
             given()
