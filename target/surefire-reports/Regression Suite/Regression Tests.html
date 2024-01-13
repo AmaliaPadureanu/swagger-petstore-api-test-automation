@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>22/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Jan 13 12:07:05 EET 2024</td>
+<td>Started on:</td><td>Sat Jan 13 12:12:07 EET 2024</td>
 </tr>
-<tr><td>Total time:</td><td>34 seconds (34782 ms)</td>
+<tr><td>Total time:</td><td>34 seconds (34028 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -109,8 +109,8 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
 	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
 	... 42 more
-... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace94690722", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace94690722'><pre>java.lang.RuntimeException: com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace30604162", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace30604162'><pre>java.lang.RuntimeException: com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
  at [Source: (String)&quot;{&quot;id&quot;:9223372036854755014,&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;Ringo&quot;},&quot;name&quot;:&quot;doggie&quot;,&quot;photoUrls&quot;:[&quot;string&quot;],&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;Cat&quot;}],&quot;status&quot;:&quot;sold&quot;}&quot;; line: 1, column: 26] (through reference chain: models.Pet[&quot;id&quot;])
 	at io.restassured.internal.path.json.mapping.JsonPathJackson2ObjectDeserializer.deserialize(JsonPathJackson2ObjectDeserializer.java:30)
 	at io.restassured.internal.path.json.mapping.JsonObjectDeserializer.deserializeWithJackson2(JsonObjectDeserializer.java:93)
@@ -203,22 +203,22 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 <tr>
 <td title='tests.UserTests.createUsersWithList()'><b>createUsersWithList</b><br>Test class: tests.UserTests</td>
 <td></td>
-<td>3</td>
+<td>4</td>
 <td>tests.UserTests@25ce9dc4</td></tr>
 <tr>
 <td title='tests.PetTests.deletePet()'><b>deletePet</b><br>Test class: tests.PetTests</td>
 <td></td>
-<td>2</td>
+<td>1</td>
 <td>tests.PetTests@69e153c5</td></tr>
 <tr>
 <td title='tests.StoreTests.deletePurchaseOrderById()'><b>deletePurchaseOrderById</b><br>Test class: tests.StoreTests</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td>tests.StoreTests@173ed316</td></tr>
 <tr>
 <td title='tests.UserTests.deleteUser()'><b>deleteUser</b><br>Test class: tests.UserTests</td>
 <td></td>
-<td>2</td>
+<td>1</td>
 <td>tests.UserTests@25ce9dc4</td></tr>
 <tr>
 <td title='tests.StoreTests.findPurchaseOrderById()'><b>findPurchaseOrderById</b><br>Test class: tests.StoreTests</td>
@@ -238,12 +238,12 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 <tr>
 <td title='tests.PetTests.getPetById()'><b>getPetById</b><br>Test class: tests.PetTests</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td>tests.PetTests@69e153c5</td></tr>
 <tr>
 <td title='tests.StoreTests.getStoreInventory()'><b>getStoreInventory</b><br>Test class: tests.StoreTests</td>
 <td></td>
-<td>1</td>
+<td>0</td>
 <td>tests.StoreTests@173ed316</td></tr>
 <tr>
 <td title='tests.UserTests.getUserByUsername()'><b>getUserByUsername</b><br>Test class: tests.UserTests</td>
@@ -253,7 +253,7 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 <tr>
 <td title='tests.UserTests.login()'><b>login</b><br>Test class: tests.UserTests</td>
 <td></td>
-<td>1</td>
+<td>0</td>
 <td>tests.UserTests@25ce9dc4</td></tr>
 <tr>
 <td title='tests.UserTests.logout()'><b>logout</b><br>Test class: tests.UserTests</td>
@@ -278,7 +278,7 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 <tr>
 <td title='tests.UserTests.updateUserEmailAddress()'><b>updateUserEmailAddress</b><br>Test class: tests.UserTests</td>
 <td></td>
-<td>2</td>
+<td>1</td>
 <td>tests.UserTests@25ce9dc4</td></tr>
 <tr>
 <td title='tests.PetTests.uploadPetImage()'><b>uploadPetImage</b><br>Test class: tests.PetTests</td>
@@ -288,7 +288,7 @@ Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value 
 <tr>
 <td title='tests.PetTests.validatePetHasPhotoUrl()'><b>validatePetHasPhotoUrl</b><br>Test class: tests.PetTests</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td>tests.PetTests@69e153c5</td></tr>
 <tr>
 <td title='tests.PetTests.validateResponseContainsAllData()'><b>validateResponseContainsAllData</b><br>Test class: tests.PetTests</td>

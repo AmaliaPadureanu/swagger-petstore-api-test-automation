@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 23, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.5 s <<< FAILURE! - in TestSuite
-tests.PetTests.getPetsByStatus  Time elapsed: 1.045 s  <<< FAILURE!
+Tests run: 23, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 34.851 s <<< FAILURE! - in TestSuite
+tests.PetTests.getPetsByStatus  Time elapsed: 1.043 s  <<< FAILURE!
 java.lang.RuntimeException: 
 com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
  at [Source: (String)"{"id":9223372036854755014,"category":{"id":0,"name":"Ringo"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"Cat"}],"status":"sold"}"; line: 1, column: 26] (through reference chain: models.Pet["id"])

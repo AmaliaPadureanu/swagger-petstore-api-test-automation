@@ -2,32 +2,32 @@
 <testng-results ignored="0" total="23" passed="22" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-13T12:07:05 EET" name="Regression Suite" finished-at="2024-01-13T12:07:40 EET" duration-ms="34782">
+  <suite started-at="2024-01-13T12:12:07 EET" name="Regression Suite" finished-at="2024-01-13T12:12:41 EET" duration-ms="34028">
     <groups>
     </groups>
-    <test started-at="2024-01-13T12:07:05 EET" name="Regression Tests" finished-at="2024-01-13T12:07:40 EET" duration-ms="34782">
+    <test started-at="2024-01-13T12:12:07 EET" name="Regression Tests" finished-at="2024-01-13T12:12:41 EET" duration-ms="34028">
       <class name="tests.PetTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:05 EET" name="setup" finished-at="2024-01-13T12:07:05 EET" duration-ms="223" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:07 EET" name="setup" finished-at="2024-01-13T12:12:08 EET" duration-ms="212" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="createPet()[pri:1, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:05 EET" name="createPet" finished-at="2024-01-13T12:07:07 EET" duration-ms="1724" status="PASS">
+        <test-method signature="createPet()[pri:1, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:08 EET" name="createPet" finished-at="2024-01-13T12:12:09 EET" duration-ms="1575" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createPet -->
-        <test-method signature="getPetAndValidateCategoryName()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:07 EET" name="getPetAndValidateCategoryName" finished-at="2024-01-13T12:07:08 EET" duration-ms="1095" status="PASS">
+        <test-method signature="getPetAndValidateCategoryName()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:09 EET" name="getPetAndValidateCategoryName" finished-at="2024-01-13T12:12:10 EET" duration-ms="1008" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPetAndValidateCategoryName -->
-        <test-method signature="getPetAndValidateName()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:08 EET" name="getPetAndValidateName" finished-at="2024-01-13T12:07:09 EET" duration-ms="1009" status="PASS">
+        <test-method signature="getPetAndValidateName()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:10 EET" name="getPetAndValidateName" finished-at="2024-01-13T12:12:11 EET" duration-ms="1024" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPetAndValidateName -->
-        <test-method signature="getPetById()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:09 EET" name="getPetById" finished-at="2024-01-13T12:07:10 EET" duration-ms="921" status="PASS">
+        <test-method signature="getPetById()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:11 EET" name="getPetById" finished-at="2024-01-13T12:12:12 EET" duration-ms="1013" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPetById -->
-        <test-method signature="getPetsByStatus()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:10 EET" name="getPetsByStatus" finished-at="2024-01-13T12:07:11 EET" duration-ms="1041" status="FAIL">
+        <test-method signature="getPetsByStatus()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:12 EET" name="getPetsByStatus" finished-at="2024-01-13T12:12:13 EET" duration-ms="1038" status="FAIL">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
@@ -104,87 +104,87 @@ at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(Bean
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPetsByStatus -->
-        <test-method signature="uploadPetImage()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:11 EET" name="uploadPetImage" finished-at="2024-01-13T12:07:12 EET" duration-ms="1514" status="PASS">
+        <test-method signature="uploadPetImage()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:13 EET" name="uploadPetImage" finished-at="2024-01-13T12:12:15 EET" duration-ms="1622" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadPetImage -->
-        <test-method signature="validatePetHasPhotoUrl()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:12 EET" name="validatePetHasPhotoUrl" finished-at="2024-01-13T12:07:13 EET" duration-ms="972" status="PASS">
+        <test-method signature="validatePetHasPhotoUrl()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:15 EET" name="validatePetHasPhotoUrl" finished-at="2024-01-13T12:12:16 EET" duration-ms="1040" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validatePetHasPhotoUrl -->
-        <test-method signature="validateResponseContainsAllData()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:13 EET" name="validateResponseContainsAllData" finished-at="2024-01-13T12:07:14 EET" duration-ms="733" status="PASS">
+        <test-method signature="validateResponseContainsAllData()[pri:2, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:16 EET" name="validateResponseContainsAllData" finished-at="2024-01-13T12:12:17 EET" duration-ms="712" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateResponseContainsAllData -->
-        <test-method signature="updatePet()[pri:3, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:14 EET" name="updatePet" finished-at="2024-01-13T12:07:15 EET" duration-ms="664" status="PASS">
+        <test-method signature="updatePet()[pri:3, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:17 EET" name="updatePet" finished-at="2024-01-13T12:12:17 EET" duration-ms="718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updatePet -->
-        <test-method signature="updatePetFormData()[pri:3, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:15 EET" name="updatePetFormData" finished-at="2024-01-13T12:07:17 EET" duration-ms="2677" status="PASS">
+        <test-method signature="updatePetFormData()[pri:3, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:17 EET" name="updatePetFormData" finished-at="2024-01-13T12:12:20 EET" duration-ms="2547" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updatePetFormData -->
-        <test-method signature="deletePet()[pri:4, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:07:17 EET" name="deletePet" finished-at="2024-01-13T12:07:19 EET" duration-ms="2020" status="PASS">
+        <test-method signature="deletePet()[pri:4, instance:tests.PetTests@69e153c5]" started-at="2024-01-13T12:12:20 EET" name="deletePet" finished-at="2024-01-13T12:12:22 EET" duration-ms="1944" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deletePet -->
       </class> <!-- tests.PetTests -->
       <class name="tests.UserTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:23 EET" name="setup" finished-at="2024-01-13T12:07:23 EET" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:26 EET" name="setup" finished-at="2024-01-13T12:12:26 EET" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="login()[pri:1, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:23 EET" name="login" finished-at="2024-01-13T12:07:24 EET" duration-ms="1022" status="PASS">
+        <test-method signature="login()[pri:1, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:26 EET" name="login" finished-at="2024-01-13T12:12:27 EET" duration-ms="922" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="createUser()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:24 EET" name="createUser" finished-at="2024-01-13T12:07:25 EET" duration-ms="1023" status="PASS">
+        <test-method signature="createUser()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:27 EET" name="createUser" finished-at="2024-01-13T12:12:28 EET" duration-ms="1020" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUser -->
-        <test-method signature="createUsersWithArray()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:25 EET" name="createUsersWithArray" finished-at="2024-01-13T12:07:29 EET" duration-ms="3991" status="PASS">
+        <test-method signature="createUsersWithArray()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:28 EET" name="createUsersWithArray" finished-at="2024-01-13T12:12:32 EET" duration-ms="3684" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUsersWithArray -->
-        <test-method signature="createUsersWithList()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:29 EET" name="createUsersWithList" finished-at="2024-01-13T12:07:33 EET" duration-ms="3992" status="PASS">
+        <test-method signature="createUsersWithList()[pri:2, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:32 EET" name="createUsersWithList" finished-at="2024-01-13T12:12:36 EET" duration-ms="4095" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUsersWithList -->
-        <test-method signature="getUserByUsername()[pri:3, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:33 EET" name="getUserByUsername" finished-at="2024-01-13T12:07:34 EET" duration-ms="1025" status="PASS">
+        <test-method signature="getUserByUsername()[pri:3, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:36 EET" name="getUserByUsername" finished-at="2024-01-13T12:12:37 EET" duration-ms="1029" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getUserByUsername -->
-        <test-method signature="updateUserEmailAddress()[pri:3, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:34 EET" name="updateUserEmailAddress" finished-at="2024-01-13T12:07:36 EET" duration-ms="2047" status="PASS">
+        <test-method signature="updateUserEmailAddress()[pri:3, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:37 EET" name="updateUserEmailAddress" finished-at="2024-01-13T12:12:39 EET" duration-ms="1944" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateUserEmailAddress -->
-        <test-method signature="deleteUser()[pri:4, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:36 EET" name="deleteUser" finished-at="2024-01-13T12:07:39 EET" duration-ms="2048" status="PASS">
+        <test-method signature="deleteUser()[pri:4, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:39 EET" name="deleteUser" finished-at="2024-01-13T12:12:40 EET" duration-ms="1843" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteUser -->
-        <test-method signature="logout()[pri:5, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:07:39 EET" name="logout" finished-at="2024-01-13T12:07:40 EET" duration-ms="1024" status="PASS">
+        <test-method signature="logout()[pri:5, instance:tests.UserTests@25ce9dc4]" started-at="2024-01-13T12:12:40 EET" name="logout" finished-at="2024-01-13T12:12:41 EET" duration-ms="1022" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- tests.UserTests -->
       <class name="tests.StoreTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:07:19 EET" name="setup" finished-at="2024-01-13T12:07:19 EET" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:12:22 EET" name="setup" finished-at="2024-01-13T12:12:22 EET" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="getStoreInventory()[pri:0, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:07:19 EET" name="getStoreInventory" finished-at="2024-01-13T12:07:20 EET" duration-ms="1021" status="PASS">
+        <test-method signature="getStoreInventory()[pri:0, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:12:22 EET" name="getStoreInventory" finished-at="2024-01-13T12:12:23 EET" duration-ms="920" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getStoreInventory -->
-        <test-method signature="placeOrder()[pri:1, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:07:20 EET" name="placeOrder" finished-at="2024-01-13T12:07:21 EET" duration-ms="1033" status="PASS">
+        <test-method signature="placeOrder()[pri:1, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:12:23 EET" name="placeOrder" finished-at="2024-01-13T12:12:24 EET" duration-ms="1041" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- placeOrder -->
-        <test-method signature="findPurchaseOrderById()[pri:2, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:07:21 EET" name="findPurchaseOrderById" finished-at="2024-01-13T12:07:22 EET" duration-ms="1024" status="PASS">
+        <test-method signature="findPurchaseOrderById()[pri:2, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:12:24 EET" name="findPurchaseOrderById" finished-at="2024-01-13T12:12:25 EET" duration-ms="1014" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- findPurchaseOrderById -->
-        <test-method signature="deletePurchaseOrderById()[pri:3, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:07:22 EET" name="deletePurchaseOrderById" finished-at="2024-01-13T12:07:23 EET" duration-ms="912" status="PASS">
+        <test-method signature="deletePurchaseOrderById()[pri:3, instance:tests.StoreTests@173ed316]" started-at="2024-01-13T12:12:25 EET" name="deletePurchaseOrderById" finished-at="2024-01-13T12:12:26 EET" duration-ms="1016" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deletePurchaseOrderById -->
