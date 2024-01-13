@@ -1,0 +1,9 @@
+models/User.class
+models/ApiResponse.class
+models/PetStatus.class
+models/Tag.class
+models/OrderStatus.class
+models/Pet.class
+config/PetStoreEndpoints.class
+models/Order.class
+models/Category.class

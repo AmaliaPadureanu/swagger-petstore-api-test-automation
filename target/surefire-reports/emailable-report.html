@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Regression Suite</th></tr>
+<tr><td><a href="#t0">Regression Tests</a></td><td class="num">22</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">34,782</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Regression Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Regression Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.PetTests</td><td><a href="#m0">getPetsByStatus</a></td><td rowspan="1">1705140430267</td><td rowspan="1">1041</td></tr><tr><th colspan="4">Regression Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="10">tests.PetTests</td><td><a href="#m1">createPet</a></td><td rowspan="1">1705140425515</td><td rowspan="1">1724</td></tr><tr class="passedeven"><td><a href="#m2">deletePet</a></td><td rowspan="1">1705140437872</td><td rowspan="1">2020</td></tr><tr class="passedeven"><td><a href="#m3">getPetAndValidateCategoryName</a></td><td rowspan="1">1705140427241</td><td rowspan="1">1095</td></tr><tr class="passedeven"><td><a href="#m4">getPetAndValidateName</a></td><td rowspan="1">1705140428336</td><td rowspan="1">1009</td></tr><tr class="passedeven"><td><a href="#m5">getPetById</a></td><td rowspan="1">1705140429346</td><td rowspan="1">921</td></tr><tr class="passedeven"><td><a href="#m6">updatePet</a></td><td rowspan="1">1705140434530</td><td rowspan="1">664</td></tr><tr class="passedeven"><td><a href="#m7">updatePetFormData</a></td><td rowspan="1">1705140435195</td><td rowspan="1">2677</td></tr><tr class="passedeven"><td><a href="#m8">uploadPetImage</a></td><td rowspan="1">1705140431310</td><td rowspan="1">1514</td></tr><tr class="passedeven"><td><a href="#m9">validatePetHasPhotoUrl</a></td><td rowspan="1">1705140432825</td><td rowspan="1">972</td></tr><tr class="passedeven"><td><a href="#m10">validateResponseContainsAllData</a></td><td rowspan="1">1705140433797</td><td rowspan="1">733</td></tr><tr class="passedodd"><td rowspan="4">tests.StoreTests</td><td><a href="#m11">deletePurchaseOrderById</a></td><td rowspan="1">1705140442974</td><td rowspan="1">912</td></tr><tr class="passedodd"><td><a href="#m12">findPurchaseOrderById</a></td><td rowspan="1">1705140441950</td><td rowspan="1">1024</td></tr><tr class="passedodd"><td><a href="#m13">getStoreInventory</a></td><td rowspan="1">1705140439895</td><td rowspan="1">1021</td></tr><tr class="passedodd"><td><a href="#m14">placeOrder</a></td><td rowspan="1">1705140440917</td><td rowspan="1">1033</td></tr><tr class="passedeven"><td rowspan="8">tests.UserTests</td><td><a href="#m15">createUser</a></td><td rowspan="1">1705140444910</td><td rowspan="1">1023</td></tr><tr class="passedeven"><td><a href="#m16">createUsersWithArray</a></td><td rowspan="1">1705140445934</td><td rowspan="1">3991</td></tr><tr class="passedeven"><td><a href="#m17">createUsersWithList</a></td><td rowspan="1">1705140449926</td><td rowspan="1">3992</td></tr><tr class="passedeven"><td><a href="#m18">deleteUser</a></td><td rowspan="1">1705140456992</td><td rowspan="1">2048</td></tr><tr class="passedeven"><td><a href="#m19">getUserByUsername</a></td><td rowspan="1">1705140453919</td><td rowspan="1">1025</td></tr><tr class="passedeven"><td><a href="#m20">login</a></td><td rowspan="1">1705140443888</td><td rowspan="1">1022</td></tr><tr class="passedeven"><td><a href="#m21">logout</a></td><td rowspan="1">1705140459040</td><td rowspan="1">1024</td></tr><tr class="passedeven"><td><a href="#m22">updateUserEmailAddress</a></td><td rowspan="1">1705140454945</td><td rowspan="1">2047</td></tr></tbody>
+</table>
+<h2>Regression Tests</h2><h3 id="m0">tests.PetTests#getPetsByStatus</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.RuntimeException: com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
+ at [Source: (String)&quot;{&quot;id&quot;:9223372036854755014,&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;Ringo&quot;},&quot;name&quot;:&quot;doggie&quot;,&quot;photoUrls&quot;:[&quot;string&quot;],&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;Cat&quot;}],&quot;status&quot;:&quot;sold&quot;}&quot;; line: 1, column: 26] (through reference chain: models.Pet[&quot;id&quot;])
+	at io.restassured.internal.path.json.mapping.JsonPathJackson2ObjectDeserializer.deserialize(JsonPathJackson2ObjectDeserializer.java:30)
+	at io.restassured.internal.path.json.mapping.JsonObjectDeserializer.deserializeWithJackson2(JsonObjectDeserializer.java:93)
+	at io.restassured.internal.path.json.mapping.JsonObjectDeserializer.deserialize(JsonObjectDeserializer.java:53)
+	at io.restassured.path.json.JsonPath.jsonStringToObject(JsonPath.java:1093)
+	at io.restassured.path.json.JsonPath.getList(JsonPath.java:400)
+	at tests.PetTests.getPetsByStatus(PetTests.java:58)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
+ at [Source: (String)&quot;{&quot;id&quot;:9223372036854755014,&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;Ringo&quot;},&quot;name&quot;:&quot;doggie&quot;,&quot;photoUrls&quot;:[&quot;string&quot;],&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;Cat&quot;}],&quot;status&quot;:&quot;sold&quot;}&quot;; line: 1, column: 26] (through reference chain: models.Pet[&quot;id&quot;])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:402)
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:361)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.wrapAndThrow(BeanDeserializerBase.java:1826)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4730)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3677)
+	at io.restassured.internal.path.json.mapping.JsonPathJackson2ObjectDeserializer.deserialize(JsonPathJackson2ObjectDeserializer.java:28)
+	... 37 more
+Caused by: com.fasterxml.jackson.core.exc.InputCoercionException: Numeric value (9223372036854755014) out of range of int (-2147483648 - 2147483647)
+ at [Source: (String)&quot;{&quot;id&quot;:9223372036854755014,&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;Ringo&quot;},&quot;name&quot;:&quot;doggie&quot;,&quot;photoUrls&quot;:[&quot;string&quot;],&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;Cat&quot;}],&quot;status&quot;:&quot;sold&quot;}&quot;; line: 1, column: 26]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportInputCoercion(ParserMinimalBase.java:637)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase.reportOverflowInt(ParserMinimalBase.java:606)
+	at com.fasterxml.jackson.core.base.ParserBase.convertNumberToInt(ParserBase.java:979)
+	at com.fasterxml.jackson.core.base.ParserBase._parseIntValue(ParserBase.java:887)
+	at com.fasterxml.jackson.core.base.ParserBase.getIntValue(ParserBase.java:710)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:526)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
+	... 42 more
+... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">tests.PetTests#createPet</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">tests.PetTests#deletePet</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">tests.PetTests#getPetAndValidateCategoryName</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">tests.PetTests#getPetAndValidateName</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">tests.PetTests#getPetById</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">tests.PetTests#updatePet</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">tests.PetTests#updatePetFormData</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">tests.PetTests#uploadPetImage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">tests.PetTests#validatePetHasPhotoUrl</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">tests.PetTests#validateResponseContainsAllData</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">tests.StoreTests#deletePurchaseOrderById</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">tests.StoreTests#findPurchaseOrderById</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">tests.StoreTests#getStoreInventory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">tests.StoreTests#placeOrder</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">tests.UserTests#createUser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">tests.UserTests#createUsersWithArray</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">tests.UserTests#createUsersWithList</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m18">tests.UserTests#deleteUser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m19">tests.UserTests#getUserByUsername</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m20">tests.UserTests#login</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m21">tests.UserTests#logout</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m22">tests.UserTests#updateUserEmailAddress</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>
