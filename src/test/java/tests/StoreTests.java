@@ -1,24 +1,28 @@
 package tests;
 
+import config.PetStoreEndpoints;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.restassured.response.Response;
 import models.ApiResponse;
 import models.Order;
 import models.OrderStatus;
-import config.PetStoreEndpoints;
-import testConfig.TestConfig;
-import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import testConfig.TestConfig;
 
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+@Epic("Store")
 public class StoreTests extends TestConfig {
 
     Order testOrder = new Order(9, 42520, 1,
             "2024-01-07T15:50:46.121Z", OrderStatus.placed.toString(), true);
 
     @Test(priority = 1)
+    @Description("Place order Test")
     public void placeOrder() {
         given()
                 .body(testOrder)
@@ -30,6 +34,7 @@ public class StoreTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Find purchase order by Id Test")
     public void findPurchaseOrderById() {
         given()
                 .pathParam("orderId", testOrder.getId())
@@ -41,6 +46,7 @@ public class StoreTests extends TestConfig {
     }
 
     @Test(priority = 3)
+    @Description("Delete purchase order by Id Test")
     public void deletePurchaseOrderById() {
         ApiResponse apiResponse = given()
                 .pathParam("orderId", testOrder.getId())
@@ -53,6 +59,7 @@ public class StoreTests extends TestConfig {
     }
 
     @Test
+    @Description("Get store inventory Test")
     public void getStoreInventory() {
         Response response = given()
         .when()

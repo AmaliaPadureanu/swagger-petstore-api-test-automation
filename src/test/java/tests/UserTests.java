@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import models.ApiResponse;
 import models.User;
 import config.PetStoreEndpoints;
@@ -10,12 +12,14 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+@Epic("User")
 public class UserTests extends TestConfig {
 
     User testUser = DataGenerationUtils.generateNewRandomUser();
     ApiResponse apiResponse;
 
     @Test(priority = 1)
+    @Description("Login Test")
     public void login() {
          apiResponse = given()
                 .queryParam("username", "test")
@@ -29,6 +33,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Create login Test")
     public void createUser() {
         apiResponse = given()
                 .body(testUser)
@@ -40,6 +45,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Create multiple users using a list Test")
     public void createUsersWithList() {
         User testUser1 = DataGenerationUtils.generateNewRandomUser();
         User testUser2 = DataGenerationUtils.generateNewRandomUser();
@@ -65,6 +71,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Create multiple users using an array Test")
     public void createUsersWithArray() {
         User testUser4 = DataGenerationUtils.generateNewRandomUser();
         User testUser5 = DataGenerationUtils.generateNewRandomUser();
@@ -90,6 +97,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 3)
+    @Description("Get user by username Test")
     public void getUserByUsername() {
         String username = given()
                 .pathParam("username", testUser.getUsername())
@@ -101,6 +109,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 3)
+    @Description("Update user's email address Test")
     public void updateUserEmailAddress() {
         String newEmailAddress = DataGenerationUtils.generateRandomEmailAddress();
         testUser.setEmail(newEmailAddress);
@@ -121,6 +130,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 4)
+    @Description("Delete user Test")
     public void deleteUser() {
         given()
                 .pathParam("username", testUser.getUsername())
@@ -140,6 +150,7 @@ public class UserTests extends TestConfig {
     }
 
     @Test(priority = 5)
+    @Description("Logout test")
     public void logout() {
         apiResponse = given()
                 .queryParam("username", "test")

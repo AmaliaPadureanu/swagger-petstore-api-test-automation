@@ -1,14 +1,16 @@
 package tests;
 
+import config.PetStoreEndpoints;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import models.Category;
 import models.Pet;
 import models.PetStatus;
 import models.Tag;
-import config.PetStoreEndpoints;
-import testConfig.TestConfig;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import testConfig.TestConfig;
 import testUtils.DataGenerationUtils;
 
 import java.io.File;
@@ -20,6 +22,7 @@ import java.util.Set;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+@Epic("Pet")
 public class PetTests extends TestConfig {
 
     Category testCategory = new Category(DataGenerationUtils.generateRandomId(), "dogs");
@@ -30,6 +33,7 @@ public class PetTests extends TestConfig {
     Pet testPet = new Pet(DataGenerationUtils.generateRandomId(), testCategory, DataGenerationUtils.generateRandomAlphaString(), photos, tags, PetStatus.available.toString());
 
     @Test(priority = 1)
+    @Description("Create Pet Test")
     public void createPet() {
         given()
                 .body(testPet)
@@ -40,6 +44,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Get pet by Id Test")
     public void getPetById() {
         given()
                 .pathParam("petId", testPet.getId())
@@ -49,6 +54,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Get pets by status Test")
     public void getPetsByStatus() {
         List<Pet> pets = given()
                 .queryParam("status", PetStatus.sold.toString())
@@ -61,6 +67,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Get pet and validate its name Test")
     public void getPetAndValidateName() {
         String petName = given()
                 .pathParam("petId", testPet.getId())
@@ -72,6 +79,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Get pet and validate its category name Test")
     public void getPetAndValidateCategoryName() {
         Category petCategory = given()
                 .pathParam("petId", testPet.getId())
@@ -84,6 +92,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Validate the response contains all data Test")
     public void validateResponseContainsAllData() {
         Set<String> expectedData = Set.of("id", "category", "name", "photoUrls", "tags", "status");
         Response response =
@@ -97,6 +106,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Validate the pet has a photo url Test")
     public void validatePetHasPhotoUrl() {
         Response response =
                 given()
@@ -110,6 +120,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 2)
+    @Description("Upload an image to an existing pet Test")
     public void uploadPetImage() {
         File petImage = new File("src/test/java/testUtils/cute-puppy.jpg");
 
@@ -123,6 +134,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 3)
+    @Description("Update pet Test")
     public void updatePet() {
         String newStatus = PetStatus.pending.toString();
         testPet.setStatus(newStatus);
@@ -136,6 +148,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 3)
+    @Description("Update pet using form data Test")
     public void updatePetFormData() {
         String newName = DataGenerationUtils.generateRandomAlphaString();
         String newStatus = PetStatus.sold.toString();
@@ -167,6 +180,7 @@ public class PetTests extends TestConfig {
     }
 
     @Test(priority = 4)
+    @Description("Delete pet Test")
     public void deletePet() {
         given()
                 .pathParam("petId", testPet.getId())

@@ -6,8 +6,9 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.testng.annotations.BeforeClass;
+import testUtils.TestLogger;
 
-public class TestConfig {
+public class TestConfig extends TestLogger {
 
     @BeforeClass
     public static void setup() {
